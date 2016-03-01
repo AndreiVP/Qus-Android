@@ -37,12 +37,12 @@ view_bar = 'android.view.View'
 view_title = 'android.widget.TextView'
 
 # Search_home -------------------------------------------------------------------------
-search_magn_glass = 'com.budtobud.qus:id/search'
+search_magn_glass = 'com.budtobud.qus.development:id/search'
 
 # Search_process ----------------------------------------------------------------------
-dropdown_button = 'com.budtobud.qus:id/btn_queue_search_dropdown'
-search_input_text ='com.budtobud.qus:id/search_src_text'
-search_loading_spinner = 'com.budtobud.qus:id/pb_queue_search_loading'
+dropdown_button = 'com.budtobud.qus.development:id/btn_queue_search_dropdown'
+search_input_text ='com.budtobud.qus.development:id/search_src_text'
+search_loading_spinner = 'com.budtobud.qus.development:id/pb_queue_search_loading'
 
 
 

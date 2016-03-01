@@ -43,6 +43,16 @@ def setup_login_test(self, res='r'):
         desired_caps['noReset'] = 'true'
     self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
+def setup_inapp_test(self, res='r'):
+    desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.ToolbarActivity'
+    if platform.system() == 'Windows':
+        desired_caps['app'] = 'D:/Automation/Q.us_com.budtobud.qus.development.apk'
+    else:
+        print('Error login')
+    if res == 'r':
+        desired_caps['noReset'] = 'true'
+    self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
 
 def setup(self):
     # Start appium server

@@ -1,5 +1,7 @@
 import libs.locators as loc
 import platform
+import time
+from appium import webdriver
 from selenium.webdriver.common.touch_actions import TouchActions
 
 
@@ -28,9 +30,21 @@ def get_page_title(self):
 
 def expand_music_section(self, index):
     touch = TouchActions(self.driver)
-    dropdowns = self.dricer.find_elements_by_id(loc.dropdown_button)
-    dropdown_sections = dropdowns[index]
+    dropdowns_list = self.driver.find_elements_by_id(loc.dropdown_button)
+    dropdown_sections = dropdowns_list[index]
     touch.tap(dropdown_sections).perform()
+
+
+def wait_for_search(self):
+    search_ended = 0
+    while search_ended == 0:
+            try:
+                self.driver.find_elements_by_id(loc.search_loading_spinner)
+                search_ended = 0
+            except:
+                time.sleep(1)
+            if self.driver.find_elements_by_id(loc.search_loading_spinner) == 0:
+                break
 
 
 def hide_keys(self):

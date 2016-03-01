@@ -41,8 +41,8 @@ class LoginTest(unittest.TestCase):
         log.login(self, loginDetailsNoUsername)
         time.sleep(1)
         try:
-            self.driver.find_elemet_by_id(loc.sign_in_alert_title)
-            self.driver.find_elemet_by_id(loc.sign_in_alert_message)
+            self.driver.find_element_by_id(loc.sign_in_alert_title)
+            self.driver.find_element_by_id(loc.sign_in_alert_message)
             h.find_and_click_element(self, loc.sign_in_alert_OK)
         except:
             pass
@@ -51,8 +51,8 @@ class LoginTest(unittest.TestCase):
         log.login(self, loginDetailsNoPassword)
         time.sleep(1)
         try:
-            self.driver.find_elemet_by_id(loc.sign_in_alert_title)
-            self.driver.find_elemet_by_id(loc.sign_in_alert_message)
+            self.driver.find_element_by_id(loc.sign_in_alert_title)
+            self.driver.find_element_by_id(loc.sign_in_alert_message)
             h.find_and_click_element(self, loc.sign_in_alert_OK)
         except:
             pass
@@ -61,8 +61,8 @@ class LoginTest(unittest.TestCase):
         log.login(self, loginDetailsBadUsername)
         time.sleep(1)
         try:
-            self.driver.find_elemet_by_id(loc.sign_in_alert_title)
-            self.driver.find_elemet_by_id(loc.sign_in_alert_message)
+            self.driver.find_element_by_id(loc.sign_in_alert_title)
+            self.driver.find_element_by_id(loc.sign_in_alert_message)
             h.find_and_click_element(self, loc.sign_in_alert_OK)
         except:
             pass
@@ -71,8 +71,8 @@ class LoginTest(unittest.TestCase):
         log.login(self, loginDetailsBadPassword)
         time.sleep(1)
         try:
-            self.driver.find_elemet_by_id(loc.sign_in_alert_title)
-            self.driver.find_elemet_by_id(loc.sign_in_alert_message)
+            self.driver.find_element_by_id(loc.sign_in_alert_title)
+            self.driver.find_element_by_id(loc.sign_in_alert_message)
             h.find_and_click_element(self, loc.sign_in_alert_OK)
         except:
             pass
