@@ -1,8 +1,26 @@
 import libs.locators as loc
 import platform
 import time
-from appium import webdriver
+import selenium.webdriver.support.expected_conditions as EC
+import selenium.webdriver.support.ui as ui
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.touch_actions import TouchActions
+
+
+def is_not_visible(self, locator, timeout=60):
+    try:
+        ui.WebDriverWait(self.driver, timeout).until_not(EC.visibility_of_element_located((By.ID, locator)))
+        return True
+    except TimeoutException:
+        return False
+
+def is_visible(self, locator, timeout=60):
+    try:
+        ui.WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((By.ID, locator)))
+        return True
+    except TimeoutException:
+        return False
 
 
 def take_screenshot(self,name):
@@ -36,14 +54,13 @@ def expand_music_section(self, index):
 
 
 def wait_for_search(self):
-    search_ended = 0
-    while search_ended == 0:
+    spinner = self.driver.find_elements_by_id(loc.search_loading_spinner)
+    while len(spinner) > 0:
             try:
-                self.driver.find_elements_by_id(loc.search_loading_spinner)
-                search_ended = 0
+                self.driver.find_element_by_id(loc.search_loading_spinner)
             except:
                 time.sleep(1)
-            if self.driver.find_elements_by_id(loc.search_loading_spinner) == 0:
+            if self.driver.find_element_by_id(loc.search_loading_spinner) == 0:
                 break
 
 

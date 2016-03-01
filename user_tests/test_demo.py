@@ -27,7 +27,8 @@ class DemoTest(unittest.TestCase):
 
     def test_search(self):
         src.perform_search(self, search_text)
-        h.wait_for_search(self)
+        h.is_not_visible(self, loc.search_loading_spinner)
+        h.expand_music_section(self, 2)
 
 if __name__ == '__main__':
     unittest.main()
