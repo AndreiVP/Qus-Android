@@ -1,6 +1,4 @@
-from libs import locators as loc
-import time
-from libs import helpers as h
+import libs.locators as loc
 
 
 def perform_search(self, search_text):

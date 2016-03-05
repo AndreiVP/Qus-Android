@@ -1,13 +1,18 @@
-from libs.Search_home import searchQus as src
+import libs.Search_home.searchQus as src
 from libs import loginQus as log
 import libs.locators as loc
-from libs import helpers as h
+import libs.helpers as h
+import libs.More_options_menu.track_playlist_menu as mom
+import libs.Queue.queueQus as qu
+import libs.Drawer_menu.navigationQus as nav
+import libs.Playlists.playlistsQus as pla
 import unittest
 from config.config import setup, setup_inapp_test, tear_down_test, teardown
 
 login_details = {'username': 'apopatest@mailinator.com',
-                'passwd': '111111'}
+                 'passwd': '111111'}
 search_text = 'Major Lazer'
+
 
 class DemoTest(unittest.TestCase):
     @classmethod
@@ -24,11 +29,20 @@ class DemoTest(unittest.TestCase):
     def tearDown(self):
         tear_down_test(self)
 
-
     def test_search(self):
         src.perform_search(self, search_text)
         h.is_not_visible(self, loc.search_loading_spinner)
         h.expand_music_section(self, 2)
+        h.tap_add_button(self, 0)
+        mom.play_now(self)
+        h.open_queue(self)
+        qu.open_track_more_menu(self, 2)
+        mom.add_to_new_playlist(self)
+        nav.navigate_to_playlists(self)
+        pla.open_playlist(self, 0)
+        pla.return_to_playlists_list(self)
+        pla.delete_playlist(self, 0)
+
 
 if __name__ == '__main__':
     unittest.main()

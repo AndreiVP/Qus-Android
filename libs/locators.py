@@ -36,13 +36,39 @@ sign_in_alert_OK = 'android:id/button1'
 view_bar = 'android.view.View'
 view_title = 'android.widget.TextView'
 
-# Search_home -------------------------------------------------------------------------
+
+# Drawer menu --------------------------------------------------------------------------
+drawer_section_button = 'com.budtobud.qus.development:id/tv_text'
+
+# Search home -------------------------------------------------------------------------
 search_magn_glass = 'com.budtobud.qus.development:id/search'
 
-# Search_process ----------------------------------------------------------------------
+# Search process ----------------------------------------------------------------------
 dropdown_button = 'com.budtobud.qus.development:id/btn_queue_search_dropdown'
 search_input_text ='com.budtobud.qus.development:id/search_src_text'
 search_loading_spinner = 'com.budtobud.qus.development:id/pb_queue_search_loading'
+add_button = 'com.budtobud.qus.development:id/img_btb_add_icon'
 
+# More options menu -------------------------------------------------------------------
+more_artist_name = 'com.budtobud.qus.development:id/tv_1'
+more_song_name = 'com.budtobud.qus.development:id/tv_2'
+more_playlist_input_text = 'com.budtobud.qus.development:id/btb_edit_text'
+more_playlist_save = 'com.budtobud.qus.development:id/tv_positive'
+more_playlist_cancel = 'com.budtobud.qus.development:id/tv_negative'
+
+# Mini player --------------------------------------------------------------------
+mini_player_track_details = 'com.budtobud.qus.development:id/container_track_details'
+mini_player_play = 'com.budtobud.qus.development:id/iv_play'
+mini_player_party_icon = 'com.budtobud.qus.development:id/party_count_img'
+
+# Queue ----------------------------------------------------------------------------
+queue_more_options_menu = 'com.budtobud.qus.development:id/iv_more'
+
+# Playlists ------------------------------------------------------------------------
+playlist_edit_button = 'com.budtobud.qus.development:id/iv_more'
+playlist_title = 'com.budtobud.qus.development:id/title'
+playlist_delete_ok = 'com.budtobud.qus.development:id/tv_positive'
+playlist_delete_cancel = 'com.budtobud.qus.development:id/tv_negative'
+playlist_no_items = 'com.budtobud.qus.development:id/tv_no_items'
 
 

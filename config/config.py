@@ -9,10 +9,10 @@ loginDetails = {
                 }
 
 desired_caps = {'platformName': 'Android',
-                # 'platformVersion': '5.1',
-                # 'deviceName': 'CB5A260E1P',  # Z1 Compact,
-                'platformVersion': '5.0',
-                'deviceName': 'gt_i9505_b802fb37', #Galaxy S4
+                 'platformVersion': '5.1',
+                 'deviceName': 'CB5A260E1P',  # Z1 Compact,
+                #'platformVersion': '5.0',
+                #'deviceName': 'gt_i9505_b802fb37', #Galaxy S4
                 # 'platformVersion': '4.4',
                 # 'deviceName': 'TA4310FINM', #Xiaomi
                 'noReset': 'true',
