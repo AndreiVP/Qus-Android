@@ -8,6 +8,6 @@ def open_queue_more_menu(self):
 
 
 def open_track_more_menu(self, index):
-    more_menu_btns_list = self.driver.find_elements_by_id(loc.queue_more_options_menu)
-    track_more_menu = more_menu_btns_list[index]
-    track_more_menu.click()
+    tracks_list = self.driver.find_elements_by_id(loc.queue_more_options_menu)
+    selected_track = tracks_list[index]
+    selected_track.click()

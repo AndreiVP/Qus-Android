@@ -5,8 +5,8 @@ from libs import first_runQus as frun
 
 
 def registration(self, registration_details):
-    frun.check_welcome_Qus(self)
-    frun.check_Tour(self)
+    frun.check_welcome(self)
+    frun.check_tour(self)
     registration_view_title = self.driver.find_elements_by_id(loc.register_title)
     if len(registration_view_title) > 0:
         self.driver.find_element_by_id(loc.register_nickname).clear()

@@ -1,6 +1,4 @@
 import libs.locators as loc
-import libs.More_options_menu.track_playlist_menu as mo
-import platform
 import time
 import selenium.webdriver.support.expected_conditions as EC
 import selenium.webdriver.support.ui as ui
@@ -23,14 +21,6 @@ def is_visible(self, locator, timeout=60):
         return True
     except TimeoutException:
         return False
-
-
-def take_screenshot(self, name):
-    if platform.system() == 'Windows':
-        reports_path = 'test-reports/'
-    else:
-        reports_path = '/Users/svuser/.jenkins/jobs/Android_tests/workspace/'
-    self.driver.save_screenshot(reports_path + name + '.png')
 
 
 def find_and_click_element(self, element_id, parent=None):
@@ -57,7 +47,7 @@ def expand_music_section(self, index):
 
 def tap_add_button(self, index):
     touch = TouchActions(self.driver)
-    add_buttons_list = self.driver.find_elements_by_id(loc.add_button)
+    add_buttons_list = self.driver.find_elements_by_id(loc.search_add_button)
     add_button = add_buttons_list[index]
     touch.tap(add_button).perform()
 
@@ -69,8 +59,7 @@ def open_queue(self):
 
 
 def wait_for_search(self):
-    spinner = self.driver.find_elements_by_id(loc.search_loading_spinner)
-    while len(spinner) > 0:
+    while is_visible(self, loc.search_loading_spinner, 60):
         try:
             self.driver.find_element_by_id(loc.search_loading_spinner)
         except:

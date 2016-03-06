@@ -1,8 +1,8 @@
-import libs.Search_home.searchQus as src
+import libs.Search.searchQus as src
 from libs import loginQus as log
 import libs.locators as loc
 import libs.helpers as h
-import libs.More_options_menu.track_playlist_menu as mom
+import libs.More_options_menu.moreOptionsMenu as mom
 import libs.Queue.queueQus as qu
 import libs.Drawer_menu.navigationQus as nav
 import libs.Playlists.playlistsQus as pla

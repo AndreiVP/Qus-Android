@@ -56,10 +56,6 @@ def setup_inapp_test(self, res='r'):
 
 def setup(self):
     # Start appium server
-    #if platform.system() == 'Windows':
-    #    appium_start = ["D:/Automation/Appium/node", "D:/Automation/Appium/node_modules/appium/bin/appium.js",
-    #                    "--log-level",
-    #                    "error"]
     if platform.system() == 'Windows':
         appium_start = ["D:/Automation/Appium/node.exe", "D:/Automation\Appium/node_modules/appium/bin/appium.js",
                         "--log-level",

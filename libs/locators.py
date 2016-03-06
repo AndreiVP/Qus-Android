@@ -47,7 +47,7 @@ search_magn_glass = 'com.budtobud.qus.development:id/search'
 dropdown_button = 'com.budtobud.qus.development:id/btn_queue_search_dropdown'
 search_input_text ='com.budtobud.qus.development:id/search_src_text'
 search_loading_spinner = 'com.budtobud.qus.development:id/pb_queue_search_loading'
-add_button = 'com.budtobud.qus.development:id/img_btb_add_icon'
+search_add_button = 'com.budtobud.qus.development:id/img_btb_add_icon'
 
 # More options menu -------------------------------------------------------------------
 more_artist_name = 'com.budtobud.qus.development:id/tv_1'
