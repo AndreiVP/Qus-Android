@@ -1,4 +1,4 @@
-import libs.loginQus as log
+import libs.signInQus as log
 import libs.locators as loc
 import libs.helpers as h
 import unittest

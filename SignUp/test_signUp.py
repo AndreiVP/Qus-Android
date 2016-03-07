@@ -1,4 +1,4 @@
-import libs.registrationQus as reg
+import libs.signUpQus as sUp
 import libs.locators as loc
 import unittest
 from time import strftime
@@ -45,31 +45,33 @@ class RegistrationTest(unittest.TestCase):
 
     def setUp(self):
         set_up_test(self)
+        sUp.check_welcome(self)
+        sUp.check_tour(self)
 
     def tearDown(self):
         tear_down_test(self)
 
     def test_01_register_empty_details(self):
-        reg.registration(self, registration_empty_details)
+        sUp.registration(self, registration_empty_details)
         self.driver.find_element_by_id(loc.register_invalid_nickname)
         self.driver.find_element_by_id(loc.register_invalid_email)
         self.driver.find_element_by_id(loc.register_invalid_pswrd)
 
     def test_02_register_invalid_email_format(self):
-        reg.registration(self, registration_invalid_email_format)
+        sUp.registration(self, registration_invalid_email_format)
         self.driver.find_element_by_id(loc.register_invalid_email)
 
     def test_03_register_duplicate_email(self):
-        reg.registration(self, registration_duplicate_email)
+        sUp.registration(self, registration_duplicate_email)
         self.driver.find_element_by_id(loc.register_invalid_email)
 
     def test_04_register_invalid_pswrd(self):
-        reg.registration(self, registration_invalid_password)
+        sUp.registration(self, registration_invalid_password)
         self.driver.find_element_by_id(loc.register_invalid_pswrd)
 
     def test_05_register_valid_data(self):
-        reg.registration(self, registration_details)
-        reg.wait_for_registration(self)
+        sUp.registration(self, registration_details)
+        sUp.wait_for_registration(self)
 
 
 if __name__ == '__main__':

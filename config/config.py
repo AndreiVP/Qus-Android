@@ -3,27 +3,33 @@ from appium import webdriver
 import os, platform, time
 import libs.helpers as h
 
+# Desired capabilities that are used ------
+# desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeActivity'
+# desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.LoginActivity'
+# desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeTourActivity'
+# desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.RegisterAccountActivity'
+
 loginDetails = {
                 'username': 'apopatest@mailinator.com',
                 'passwd': '111111',
                 }
 
 desired_caps = {'platformName': 'Android',
-                 'platformVersion': '5.1',
-                 'deviceName': 'CB5A260E1P',  # Z1 Compact,
-                #'platformVersion': '5.0',
-                #'deviceName': 'gt_i9505_b802fb37', #Galaxy S4
+                 # 'platformVersion': '5.1',
+                 # 'deviceName': 'CB5A260E1P',  # Z1 Compact,
+                'platformVersion': '5.0',
+                'deviceName': 'gt_i9505_b802fb37', #Galaxy S4
                 # 'platformVersion': '4.4',
                 # 'deviceName': 'TA4310FINM', #Xiaomi
                 'noReset': 'true',
-                'MobileCapabilityType.TAKES_SCREENSHOT': 'true'
-
                 }
 
 
 def set_up_test(self, res='r'):
     desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeActivity'
-    #desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.LoginActivity'
+    # desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.LoginActivity'
+    # desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeTourActivity'
+    # desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.RegisterAccountActivity'
     if platform.system() == 'Windows':
         desired_caps['app'] = 'D:/Automation/Q.us_com.budtobud.qus.development.apk'
     else:
@@ -61,18 +67,18 @@ def setup(self):
                         "--log-level",
                         "error"]
     else:
-        print('Appium srvr error')
+        print('Appium server error')
     if platform.system() == 'Windows':
         os.system('taskkill /f /im node.exe')
     else:
         os.system('pkill -9 node')
     subprocess.Popen(appium_start)
     time.sleep(4)
-    print('appium started')
+    print('Appium started')
 
 
 def tear_down_test(self):
-    h.take_screenshot(self, self.id())
+    #h.take_screenshot(self, self.id())
     self.driver.quit()
 
 

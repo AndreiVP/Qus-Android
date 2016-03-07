@@ -28,7 +28,7 @@ def wait_for_sign_in(self):
 			time.sleep(1)
 		counter += 1
 		if counter == 60:
-			self.assertTrue(False, "Login wasn't successful in 60 sec.")
+			self.assertTrue(False, "SignIn wasn't successful in 60 sec.")
 
 
 def check_login_button(self):
