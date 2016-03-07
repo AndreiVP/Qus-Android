@@ -1,1 +1,1 @@
-from SignIn.test_signIn import LoginTest
+from SignIn.test_signIn import signInTest

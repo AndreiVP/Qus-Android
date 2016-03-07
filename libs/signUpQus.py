@@ -1,5 +1,6 @@
 import libs.locators as loc
 import libs.helpers as h
+import libs.signInQus as sIn
 import time
 
 
@@ -109,3 +110,10 @@ def wait_for_registration(self):
 			break
 	if found == False:
 		raise Exception("Account wasn't created")
+
+def signin_after_signup (self, registration_details):
+	self.driver.find_element_by_id(loc.sign_in_password).clear()
+	self.driver.find_element_by_id(loc.sign_in_password).send_keys(registration_details['password'])
+	h.hide_keys(self)
+	self.driver.find_element_by_id(loc.sign_in_submit).click()
+	sIn.wait_for_sign_in(self)

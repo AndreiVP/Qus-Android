@@ -4,8 +4,8 @@ import unittest
 from time import strftime
 from config.config import setup, set_up_test, tear_down_test, teardown
 
-unic = strftime("%a%d%b%Y")
-# unic = strftime("%a%d%b%Y%H%M")
+#unic = strftime("%a%d%b%Y")
+unic = strftime("%a%d%b%Y%H%M")
 email = 'auto{}'.format(unic)
 
 registration_details = {'nickname': '{}'.format(email),
@@ -34,7 +34,7 @@ registration_invalid_password = {'nickname': '{}'.format(email),
                                  }
 
 
-class RegistrationTest(unittest.TestCase):
+class SignUpTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         setup(cls)
@@ -51,27 +51,28 @@ class RegistrationTest(unittest.TestCase):
     def tearDown(self):
         tear_down_test(self)
 
-    def test_01_register_empty_details(self):
-        sUp.registration(self, registration_empty_details)
-        self.driver.find_element_by_id(loc.register_invalid_nickname)
-        self.driver.find_element_by_id(loc.register_invalid_email)
-        self.driver.find_element_by_id(loc.register_invalid_pswrd)
-
-    def test_02_register_invalid_email_format(self):
-        sUp.registration(self, registration_invalid_email_format)
-        self.driver.find_element_by_id(loc.register_invalid_email)
-
-    def test_03_register_duplicate_email(self):
-        sUp.registration(self, registration_duplicate_email)
-        self.driver.find_element_by_id(loc.register_invalid_email)
-
-    def test_04_register_invalid_pswrd(self):
-        sUp.registration(self, registration_invalid_password)
-        self.driver.find_element_by_id(loc.register_invalid_pswrd)
+    # def test_01_register_empty_details(self):
+    #     sUp.registration(self, registration_empty_details)
+    #     self.driver.find_element_by_id(loc.register_invalid_nickname)
+    #     self.driver.find_element_by_id(loc.register_invalid_email)
+    #     self.driver.find_element_by_id(loc.register_invalid_pswrd)
+    #
+    # def test_02_register_invalid_email_format(self):
+    #     sUp.registration(self, registration_invalid_email_format)
+    #     self.driver.find_element_by_id(loc.register_invalid_email)
+    #
+    # def test_03_register_duplicate_email(self):
+    #     sUp.registration(self, registration_duplicate_email)
+    #     self.driver.find_element_by_id(loc.register_invalid_email)
+    #
+    # def test_04_register_invalid_pswrd(self):
+    #     sUp.registration(self, registration_invalid_password)
+    #     self.driver.find_element_by_id(loc.register_invalid_pswrd)
 
     def test_05_register_valid_data(self):
         sUp.registration(self, registration_details)
         sUp.wait_for_registration(self)
+        sUp.signin_after_signup(self,registration_details)
 
 
 if __name__ == '__main__':

@@ -3,25 +3,25 @@ import libs.locators as loc
 import libs.helpers as h
 import unittest
 import time
-from config.config import setup, setup_login_test, tear_down_test, teardown
+from config.config import setup, setup_signIn_test, tear_down_test, teardown
 
-login_details = {'username': 'apopatest@mailinator.com',
+signIn_details = {'username': 'apopatest@mailinator.com',
                  'password': '111111'}
 
-loginDetailsNoPassword = {'username': 'apopatest2@mailinator.com',
+signInDetailsNoPassword = {'username': 'apopatest2@mailinator.com',
                           'password': ''}
 
-loginDetailsBadPassword = {'username': 'apopatest3@mailinator.com',
+signInDetailsBadPassword = {'username': 'apopatest3@mailinator.com',
                            'password': '111112'}
 
-loginDetailsNoUsername = {'username': '',
+signInDetailsNoUsername = {'username': '',
                           'password': '111111'}
 
-loginDetailsBadUsername = {'username': 'apopatest00@mailinator.com',
+signInDetailsBadUsername = {'username': 'apopatest00@mailinator.com',
                            'password': '111111'}
 
 
-class LoginTest(unittest.TestCase):
+class signInTest(unittest.TestCase):
 	@classmethod
 	def setUpClass(cls):
 		setup(cls)
@@ -31,13 +31,13 @@ class LoginTest(unittest.TestCase):
 		teardown(cls)
 
 	def setUp(self):
-		setup_login_test(self)
+		setup_signIn_test(self)
 
 	def tearDown(self):
 		tear_down_test(self)
 
-	def test_01_login_no_username(self):
-		log.login(self, loginDetailsNoUsername)
+	def test_01_signIn_no_username(self):
+		log.signIn(self, signInDetailsNoUsername)
 		time.sleep(1)
 		try:
 			self.driver.find_element_by_id(loc.sign_in_alert_title)
@@ -46,8 +46,8 @@ class LoginTest(unittest.TestCase):
 		except:
 			pass
 
-	def test_02_login_no_password(self):
-		log.login(self, loginDetailsNoPassword)
+	def test_02_signIn_no_password(self):
+		log.signIn(self, signInDetailsNoPassword)
 		time.sleep(1)
 		try:
 			self.driver.find_element_by_id(loc.sign_in_alert_title)
@@ -56,8 +56,8 @@ class LoginTest(unittest.TestCase):
 		except:
 			pass
 
-	def test_03_login_bad_username(self):
-		log.login(self, loginDetailsBadUsername)
+	def test_03_signIn_bad_username(self):
+		log.signIn(self, signInDetailsBadUsername)
 		time.sleep(1)
 		try:
 			self.driver.find_element_by_id(loc.sign_in_alert_title)
@@ -66,8 +66,8 @@ class LoginTest(unittest.TestCase):
 		except:
 			pass
 
-	def test_04_login_bad_password(self):
-		log.login(self, loginDetailsBadPassword)
+	def test_04_signIn_bad_password(self):
+		log.signIn(self, signInDetailsBadPassword)
 		time.sleep(1)
 		try:
 			self.driver.find_element_by_id(loc.sign_in_alert_title)
@@ -76,8 +76,8 @@ class LoginTest(unittest.TestCase):
 		except:
 			pass
 
-	def test_05_login_valid_data(self):
-		log.login(self, login_details)
+	def test_05_signIn_valid_data(self):
+		log.signIn(self, signIn_details)
 		log.wait_for_sign_in(self)
 
 

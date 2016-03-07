@@ -3,7 +3,7 @@ import libs.locators as loc
 import time
 
 
-def login(self, login_details):
+def signIn(self, login_details):
 	# self.driver.find_element_by_id(loc.welcome_sign_in).click()
 	if h.is_visible(self, loc.sign_in_submit, 60):
 		self.driver.find_element_by_id(loc.sign_in_email).clear()
