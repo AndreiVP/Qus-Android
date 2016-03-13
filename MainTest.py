@@ -5,8 +5,9 @@ import SignUp.test_signUp
 
 if __name__ == '__main__':
     #test_classes_to_run = [user_tests.test_demo.DemoTest]
+    #test_classes_to_run = [SignIn.test_signIn.signInTest]
+    #test_classes_to_run = [SignUp.test_signUp.SignUpTest]
     test_classes_to_run = [SignUp.test_signUp.SignUpTest, SignIn.test_signIn.signInTest]
-    #test_classes_to_run = [SignIn.test_login.LoginTest]
     loader = unittest.TestLoader()
 
     suites_list = []

@@ -4,7 +4,7 @@ import time
 
 
 def signIn(self, login_details):
-	# self.driver.find_element_by_id(loc.welcome_sign_in).click()
+	self.driver.find_element_by_id(loc.welcome_sign_in).click()
 	if h.is_visible(self, loc.sign_in_submit, 60):
 		self.driver.find_element_by_id(loc.sign_in_email).clear()
 		self.driver.find_element_by_id(loc.sign_in_email).send_keys(login_details['username'])

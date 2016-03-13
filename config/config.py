@@ -37,21 +37,15 @@ def set_up_test(self, res='r'):
 
 
 def setup_signIn_test(self, res='r'):
-	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.LoginActivity'
+	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeActivity'
 	if platform.system() == 'Windows':
 		desired_caps['app'] = 'D:/Automation/Q.us_com.budtobud.qus.development.apk'
 	else:
 		print('Error login')
 	if res == 'r':
 		desired_caps['noReset'] = 'false'
-	try:
-		self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-	# if login failed before, try again
-	except:
+	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
-		desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeActivity'
-		self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-		self.driver.find_element_by_id(loc.welcome_sign_in).click()
 
 
 def setup_inapp_test(self, res='r'):
