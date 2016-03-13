@@ -4,7 +4,6 @@ import time
 
 
 def signIn(self, login_details):
-	self.driver.find_element_by_id(loc.welcome_sign_in).click()
 	if h.is_visible(self, loc.sign_in_submit, 60):
 		self.driver.find_element_by_id(loc.sign_in_email).clear()
 		self.driver.find_element_by_id(loc.sign_in_email).send_keys(login_details['username'])
@@ -12,8 +11,20 @@ def signIn(self, login_details):
 		self.driver.find_element_by_id(loc.sign_in_password).clear()
 		self.driver.find_element_by_id(loc.sign_in_password).send_keys(login_details['password'])
 		h.hide_keys(self)
-		h.find_and_click_element(self, 'SUBMIT')
 		self.driver.find_element_by_id(loc.sign_in_submit).click()
+
+
+def signIn_valid(self, username, password):
+	if h.is_visible(self, loc.sign_in_submit, 60):
+		self.driver.find_element_by_id(loc.sign_in_email).clear()
+		self.driver.find_element_by_id(loc.sign_in_email).send_keys(username)
+		h.hide_keys(self)
+		self.driver.find_element_by_id(loc.sign_in_password).clear()
+		self.driver.find_element_by_id(loc.sign_in_password).send_keys(password)
+		h.hide_keys(self)
+		self.driver.find_element_by_id(loc.sign_in_submit).click()
+		wait_for_sign_in(self)
+
 
 
 def wait_for_sign_in(self):
@@ -29,19 +40,3 @@ def wait_for_sign_in(self):
 		counter += 1
 		if counter == 60:
 			self.assertTrue(False, "SignIn wasn't successful in 60 sec.")
-
-
-def check_login_button(self):
-	counter = 0
-	found = False
-	while found == False:
-		try:
-			self.driver.find_element_by_id(loc.sign_in_submit)
-			found = True
-		except:
-			counter += 1
-			time.sleep(1)
-		if counter == 30:
-			break
-	if found == False:
-		raise Exception('login button not available')

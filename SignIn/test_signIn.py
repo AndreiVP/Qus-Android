@@ -38,10 +38,9 @@ class signInTest(unittest.TestCase):
 
 	def test_01_signIn_no_username(self):
 		log.signIn(self, signInDetailsNoUsername)
-		time.sleep(1)
 		try:
-			self.driver.find_element_by_id(loc.sign_in_alert_title)
-			self.driver.find_element_by_id(loc.sign_in_alert_message)
+			h.is_visible(self, loc.sign_in_alert_title, 5)
+			h.is_visible(self, loc.sign_in_alert_message, 5)
 			h.find_and_click_element(self, loc.sign_in_alert_OK)
 		except:
 			pass
@@ -50,8 +49,8 @@ class signInTest(unittest.TestCase):
 		log.signIn(self, signInDetailsNoPassword)
 		time.sleep(1)
 		try:
-			self.driver.find_element_by_id(loc.sign_in_alert_title)
-			self.driver.find_element_by_id(loc.sign_in_alert_message)
+			h.is_visible(self, loc.sign_in_alert_title, 5)
+			h.is_visible(self, loc.sign_in_alert_message, 5)
 			h.find_and_click_element(self, loc.sign_in_alert_OK)
 		except:
 			pass
@@ -60,8 +59,8 @@ class signInTest(unittest.TestCase):
 		log.signIn(self, signInDetailsBadUsername)
 		time.sleep(1)
 		try:
-			self.driver.find_element_by_id(loc.sign_in_alert_title)
-			self.driver.find_element_by_id(loc.sign_in_alert_message)
+			h.is_visible(self, loc.sign_in_alert_title, 5)
+			h.is_visible(self, loc.sign_in_alert_message, 5)
 			h.find_and_click_element(self, loc.sign_in_alert_OK)
 		except:
 			pass
@@ -70,8 +69,8 @@ class signInTest(unittest.TestCase):
 		log.signIn(self, signInDetailsBadPassword)
 		time.sleep(1)
 		try:
-			self.driver.find_element_by_id(loc.sign_in_alert_title)
-			self.driver.find_element_by_id(loc.sign_in_alert_message)
+			h.is_visible(self, loc.sign_in_alert_title, 5)
+			h.is_visible(self, loc.sign_in_alert_message, 5)
 			h.find_and_click_element(self, loc.sign_in_alert_OK)
 		except:
 			pass
@@ -79,7 +78,7 @@ class signInTest(unittest.TestCase):
 	def test_05_signIn_valid_data(self):
 		log.signIn(self, signIn_details)
 		log.wait_for_sign_in(self)
-
+		h.sign_out(self)
 
 if __name__ == '__main__':
 	unittest.main()

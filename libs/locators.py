@@ -39,6 +39,7 @@ view_title = 'android.widget.TextView'
 
 # Drawer menu --------------------------------------------------------------------------
 drawer_section_button = 'com.budtobud.qus.development:id/tv_text'
+drawer_sign_out_button = 'com.budtobud.qus.development:id/footer'
 
 # Search home -------------------------------------------------------------------------
 search_magn_glass = 'com.budtobud.qus.development:id/search'

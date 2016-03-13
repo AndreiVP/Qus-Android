@@ -1,4 +1,5 @@
 import libs.signUpQus as sUp
+import libs.helpers as h
 import libs.locators as loc
 import unittest
 from time import strftime
@@ -51,28 +52,29 @@ class SignUpTest(unittest.TestCase):
     def tearDown(self):
         tear_down_test(self)
 
-    # def test_01_register_empty_details(self):
-    #     sUp.registration(self, registration_empty_details)
-    #     self.driver.find_element_by_id(loc.register_invalid_nickname)
-    #     self.driver.find_element_by_id(loc.register_invalid_email)
-    #     self.driver.find_element_by_id(loc.register_invalid_pswrd)
-    #
-    # def test_02_register_invalid_email_format(self):
-    #     sUp.registration(self, registration_invalid_email_format)
-    #     self.driver.find_element_by_id(loc.register_invalid_email)
-    #
-    # def test_03_register_duplicate_email(self):
-    #     sUp.registration(self, registration_duplicate_email)
-    #     self.driver.find_element_by_id(loc.register_invalid_email)
-    #
-    # def test_04_register_invalid_pswrd(self):
-    #     sUp.registration(self, registration_invalid_password)
-    #     self.driver.find_element_by_id(loc.register_invalid_pswrd)
+    def test_01_register_empty_details(self):
+        sUp.registration(self, registration_empty_details)
+        h.is_visible(self, loc.register_invalid_nickname)
+        h.is_visible(self, loc.register_invalid_email)
+        h.is_visible(self, loc.register_invalid_pswrd)
+
+    def test_02_register_invalid_email_format(self):
+        sUp.registration(self, registration_invalid_email_format)
+        h.is_visible(self, loc.register_invalid_email)
+
+    def test_03_register_duplicate_email(self):
+        sUp.registration(self, registration_duplicate_email)
+        h.is_visible(self, loc.register_invalid_email)
+
+    def test_04_register_invalid_pswrd(self):
+        sUp.registration(self, registration_invalid_password)
+        h.is_visible(self, loc.register_invalid_pswrd)
 
     def test_05_register_valid_data(self):
         sUp.registration(self, registration_details)
         sUp.wait_for_registration(self)
         sUp.signin_after_signup(self,registration_details)
+        h.sign_out(self)
 
 
 if __name__ == '__main__':

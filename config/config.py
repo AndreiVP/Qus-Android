@@ -1,7 +1,6 @@
 import subprocess
 from appium import webdriver
 import os, platform, time
-import libs.locators as loc
 
 # Desired capabilities that are used ------
 # desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeActivity'
@@ -33,30 +32,18 @@ def set_up_test(self, res='r'):
 		print('App not installed')
 	if res == 'r':
 		desired_caps['noReset'] = 'false'
-	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+	self.driver = webdriver.Remote('http://192.168.0.102:4723/wd/hub', desired_caps)
 
 
-def setup_signIn_test(self, res='r'):
-	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeActivity'
+def setup_signIn_test(self, res=''):
+	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.LoginActivity'
 	if platform.system() == 'Windows':
 		desired_caps['app'] = 'D:/Automation/Q.us_com.budtobud.qus.development.apk'
 	else:
 		print('Error login')
 	if res == 'r':
 		desired_caps['noReset'] = 'false'
-	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-
-
-
-def setup_inapp_test(self, res='r'):
-	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.ToolbarActivity'
-	if platform.system() == 'Windows':
-		desired_caps['app'] = 'D:/Automation/Q.us_com.budtobud.qus.development.apk'
-	else:
-		print('Error login')
-	if res == 'r':
-		desired_caps['noReset'] = 'true'
-	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+	self.driver = webdriver.Remote('http://192.168.0.102:4723/wd/hub', desired_caps)
 
 
 def setup(self):
@@ -67,10 +54,10 @@ def setup(self):
 						"error"]
 	else:
 		print('Appium server error')
-	if platform.system() == 'Windows':
-		os.system('taskkill /f /im node.exe')
-	else:
-		os.system('pkill -9 node')
+	# if platform.system() == 'Windows':
+	# 	os.system('taskkill /f /im node.exe')
+	# else:
+	# 	os.system('pkill -9 node')
 	subprocess.Popen(appium_start)
 	time.sleep(4)
 	print('Appium started')
