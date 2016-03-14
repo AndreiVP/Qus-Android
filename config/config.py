@@ -9,15 +9,15 @@ import os, platform, time
 # desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.RegisterAccountActivity'
 
 loginDetails = {
-				'username': 'apopatest@mailinator.com',
-				'passwd': '111111',
-				}
+	'username': 'apopatest@mailinator.com',
+	'passwd': '111111',
+}
 
 desired_caps = {'platformName': 'Android',
-				 'platformVersion': '5.1',
-				 'deviceName': 'CB5A260E1P',  # Z1 Compact,
-				# 'platformVersion': '5.0',
-				# 'deviceName': 'gt_i9505_b802fb37', #Galaxy S4
+				# 'platformVersion': '5.1',
+				# 'deviceName': 'CB5A260E1P',  # Z1 Compact,
+				'platformVersion': '5.0',
+				'deviceName': 'gt_i9505_b802fb37',  # Galaxy S4
 				# 'platformVersion': '4.4',
 				# 'deviceName': 'TA4310FINM', #Xiaomi
 				'noReset': 'true',
@@ -32,7 +32,7 @@ def set_up_test(self, res='r'):
 		print('App not installed')
 	if res == 'r':
 		desired_caps['noReset'] = 'false'
-	self.driver = webdriver.Remote('http://192.168.0.102:4723/wd/hub', desired_caps)
+	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
 
 def setup_signIn_test(self, res=''):
@@ -43,7 +43,7 @@ def setup_signIn_test(self, res=''):
 		print('Error login')
 	if res == 'r':
 		desired_caps['noReset'] = 'false'
-	self.driver = webdriver.Remote('http://192.168.0.102:4723/wd/hub', desired_caps)
+	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
 
 def setup(self):
@@ -73,4 +73,3 @@ def teardown(self):
 		os.system('taskkill /f /im node.exe')
 	else:
 		os.system('pkill -9 node')
-

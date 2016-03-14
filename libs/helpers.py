@@ -31,6 +31,16 @@ def find_and_click_element(self, element_id, parent=None):
 		element = parent.find_element_by_id(element_id)
 	touch.tap(element).perform()
 
+def find_and_clear_field(self, element_id, parent=None):
+	touch = TouchActions(self.driver)
+	if parent is None:
+		element = self.driver.find_element_by_id(element_id)
+	else:
+		element = parent.find_element_by_id(element_id)
+	touch.double_tap(element).perform()
+	self.driver.keyevent(67) # KEYCODE_EVENT = 66 - code for Delete key of android keyboard
+
+
 
 def get_page_title(self):
 	title_text = self.driver.find_elements_by_class_name(loc.view_title)
