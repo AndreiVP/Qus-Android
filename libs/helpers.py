@@ -31,14 +31,17 @@ def find_and_click_element(self, element_id, parent=None):
 		element = parent.find_element_by_id(element_id)
 	touch.tap(element).perform()
 
-def find_and_clear_field(self, element_id, parent=None):
-	touch = TouchActions(self.driver)
-	if parent is None:
-		element = self.driver.find_element_by_id(element_id)
-	else:
-		element = parent.find_element_by_id(element_id)
-	touch.double_tap(element).perform()
-	self.driver.keyevent(67) # KEYCODE_EVENT = 66 - code for Delete key of android keyboard
+
+def find_and_clear_field(self, element_id):
+	self.driver.find_element_by_id(element_id).click()
+	self.driver.find_element_by_id(element_id).send_keys('')
+	# touch = TouchActions(self.driver)
+	# if parent is None:
+	# 	element = self.driver.find_element_by_id(element_id)
+	# else:
+	# 	element = parent.find_element_by_id(element_id)
+	# touch.long_press(element).perform()
+	# self.driver.keyevent(67) # KEYCODE_EVENT = 66 - code for Delete key of android keyboard
 
 
 

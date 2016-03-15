@@ -52,29 +52,54 @@ class SignUpTest(unittest.TestCase):
     def tearDown(self):
         tear_down_test(self)
 
-    def test_01_register_empty_details(self):
+    def test_register_scenarios(self):
         sUp.registration(self, registration_empty_details)
-        h.is_visible(self, loc.register_invalid_nickname)
-        h.is_visible(self, loc.register_invalid_email)
-        h.is_visible(self, loc.register_invalid_pswrd)
-
-    def test_02_register_invalid_email_format(self):
+        sUp.check_validation_message(self, 'The nickname is not valid!', 'Email is not valid',
+                                'The password needs to be at least 6 characters!')
+        print('Sign Up scenario with Empty Details was tested')
+        sUp.return_to_sign_up(self)
         sUp.registration(self, registration_invalid_email_format)
-        h.is_visible(self, loc.register_invalid_email)
-
-    def test_03_register_duplicate_email(self):
+        sUp.check_validation_message(self, '', 'Email is not valid', '')
+        print('Sign Up scenario with Invalid Email Format was tested')
+        sUp.return_to_sign_up(self)
         sUp.registration(self, registration_duplicate_email)
-        h.is_visible(self, loc.register_invalid_email)
-
-    def test_04_register_invalid_pswrd(self):
+        sUp.check_validation_message(self, '', 'The email address is already in use!', '')
+        print('Sign Up scenario with Duplicate Email was tested')
+        sUp.return_to_sign_up(self)
         sUp.registration(self, registration_invalid_password)
-        h.is_visible(self, loc.register_invalid_pswrd)
-
-    def test_05_register_valid_data(self):
+        sUp.check_validation_message(self, '', 'Email address is valid!',
+                                     'The password needs to be at least 6 characters!')
+        print('Sign Up scenario with Invalid Password was tested')
+        sUp.return_to_sign_up(self)
         sUp.registration(self, registration_details)
         sUp.wait_for_registration(self)
-        sUp.signin_after_signup(self,registration_details)
+        sUp.signin_after_signup(self, registration_details)
         h.sign_out(self)
+        print('Sign Up scenario with Valid Details was tested')
+
+    # def test_01_register_empty_details(self):
+    #     sUp.registration(self, registration_empty_details)
+    #     h.is_visible(self, loc.register_invalid_nickname)
+    #     h.is_visible(self, loc.register_invalid_email)
+    #     h.is_visible(self, loc.register_invalid_pswrd)
+    #
+    # def test_02_register_invalid_email_format(self):
+    #     sUp.registration(self, registration_invalid_email_format)
+    #     h.is_visible(self, loc.register_invalid_email)
+    #
+    # def test_03_register_duplicate_email(self):
+    #     sUp.registration(self, registration_duplicate_email)
+    #     h.is_visible(self, loc.register_invalid_email)
+    #
+    # def test_04_register_invalid_pswrd(self):
+    #     sUp.registration(self, registration_invalid_password)
+    #     h.is_visible(self, loc.register_invalid_pswrd)
+    #
+    # def test_05_register_valid_data(self):
+    #     sUp.registration(self, registration_details)
+    #     sUp.wait_for_registration(self)
+    #     sUp.signin_after_signup(self,registration_details)
+    #     h.sign_out(self)
 
 
 if __name__ == '__main__':

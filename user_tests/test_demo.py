@@ -25,12 +25,12 @@ class DemoTest(unittest.TestCase):
 
 	def setUp(self):
 		setup_signIn_test(self)
-		sIn.signIn_valid(self, 'apopatest@mailinator.com', '111111')
 
 	def tearDown(self):
 		tear_down_test(self)
 
 	def test_search(self):
+		sIn.signIn_valid(self, 'apopatest@mailinator.com', '111111')
 		src.perform_search(self, search_text)
 		h.is_not_visible(self, loc.search_loading_spinner)
 		h.expand_music_section(self, 2)
@@ -44,6 +44,7 @@ class DemoTest(unittest.TestCase):
 		pla.return_to_playlists_list(self)
 		pla.delete_playlist(self, 0)
 		h.sign_out(self)
+		print('Happy flow scenario was tested')
 
 
 if __name__ == '__main__':

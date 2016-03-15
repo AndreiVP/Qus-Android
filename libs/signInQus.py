@@ -5,7 +5,6 @@ import time
 
 
 def signIn(self, login_details):
-	if h.is_visible(self, loc.sign_in_submit, 60):
 		h.find_and_clear_field(self, loc.sign_in_email)
 		self.driver.find_element_by_id(loc.sign_in_email).send_keys(login_details['username'])
 		h.hide_keys(self)

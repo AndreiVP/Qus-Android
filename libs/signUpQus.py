@@ -47,7 +47,7 @@ def check_sign_up(self):
 	found = False
 	while found == False:
 		try:
-			self.driver.find_element_by_id(loc.register_title)
+			self.driver.find_element_by_id(loc.sign_up_title)
 			found = True
 		except:
 			counter += 1
@@ -57,7 +57,7 @@ def check_sign_up(self):
 	if found == False:
 		raise Exception('Signup view not displayed')
 	if found == True:
-		self.driver.find_element_by_id(loc.register_sign_in).click()
+		self.driver.find_element_by_id(loc.sign_up_sign_in).click()
 
 
 def open_sign_up(self):
@@ -83,17 +83,19 @@ def open_sign_in(self):
 
 
 def registration(self, registration_details):
-	if h.is_visible(self, loc.register_title, 60):
-		self.driver.find_element_by_id(loc.register_nickname).clear()
-		self.driver.find_element_by_id(loc.register_nickname).send_keys(registration_details['nickname'])
+	if h.is_visible(self, loc.sign_up_title, 60):
+		self.driver.find_element_by_id(loc.sign_up_nickname).clear()
+		self.driver.find_element_by_id(loc.sign_up_nickname).send_keys(registration_details['nickname'])
 		h.hide_keys(self)
-		self.driver.find_element_by_id(loc.register_email).clear()
-		self.driver.find_element_by_id(loc.register_email).send_keys(registration_details['email'])
+		self.driver.find_element_by_id(loc.sign_up_email).clear()
+		self.driver.find_element_by_id(loc.sign_up_email).send_keys(registration_details['email'])
 		h.hide_keys(self)
-		self.driver.find_element_by_id(loc.register_pswrd).clear()
-		self.driver.find_element_by_id(loc.register_pswrd).send_keys(registration_details['password'])
+		self.driver.find_element_by_id(loc.sign_up_password).clear()
+		self.driver.find_element_by_id(loc.sign_up_password).send_keys(registration_details['password'])
 		h.hide_keys(self)
-		self.driver.find_element_by_id(loc.register_checkbox).click()
+		self.driver.find_element_by_id(loc.sign_up_checkbox).click()
+
+
 
 
 def wait_for_registration(self):
@@ -111,9 +113,27 @@ def wait_for_registration(self):
 	if found == False:
 		raise Exception("Account wasn't created")
 
+
 def signin_after_signup (self, registration_details):
 	self.driver.find_element_by_id(loc.sign_in_password).clear()
 	self.driver.find_element_by_id(loc.sign_in_password).send_keys(registration_details['password'])
 	h.hide_keys(self)
 	self.driver.find_element_by_id(loc.sign_in_submit).click()
 	sIn.wait_for_sign_in(self)
+
+
+def check_validation_message(self, expected_validation_nickname, expected_validation_email, expected_validation_password):
+	if self.driver.find_elements_by_id(loc.sign_up_invalid_nickname):
+		validation_message = self.driver.find_element_by_id(loc.sign_up_invalid_nickname).text
+		self.assertEqual(validation_message, expected_validation_nickname, "Validation message is not the expected one")
+	if self.driver.find_elements_by_id(loc.sign_up_invalid_email):
+		validation_message = self.driver.find_element_by_id(loc.sign_up_invalid_email).text
+		self.assertEqual(validation_message, expected_validation_email, "Validation message is not the expected one")
+	if self.driver.find_elements_by_id(loc.sign_up_invalid_password):
+		validation_message = self.driver.find_element_by_id(loc.sign_up_invalid_password).text
+		self.assertEqual(validation_message, expected_validation_password, "Validation message is not the expected one")
+
+
+def return_to_sign_up(self):
+	self.driver.find_element_by_id(loc.sign_up_sign_in).click()
+	self.driver.find_element_by_id(loc.sign_in_sign_up).click()
