@@ -7,7 +7,7 @@ import libs.Queue.queueQus as qu
 import libs.Drawer_menu.navigationQus as nav
 import libs.Playlists.playlistsQus as pla
 import unittest
-from config.config import setup, setup_signIn_test, tear_down_test, teardown
+from config.config import setup, setup_first_signIn_test, tear_down_test, teardown
 
 login_details = {'username': 'apopatest@mailinator.com',
                  'passwd': '111111'}
@@ -24,7 +24,7 @@ class DemoTest(unittest.TestCase):
 		teardown(cls)
 
 	def setUp(self):
-		setup_signIn_test(self)
+		setup_first_signIn_test(self)
 
 	def tearDown(self):
 		tear_down_test(self)

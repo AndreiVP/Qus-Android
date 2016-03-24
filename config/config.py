@@ -1,4 +1,6 @@
 import subprocess
+import libs.locators as loc
+import libs.helpers as h
 from appium import webdriver
 import os, platform, time
 
@@ -27,7 +29,7 @@ desired_caps = {'platformName': 'Android',
 def set_up_test(self, res='r'):
 	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeActivity'
 	if platform.system() == 'Windows':
-		desired_caps['app'] = 'D:/Automation/Q.us_com.budtobud.qus.development.apk'
+		desired_caps['app'] = 'D:/Automation/Qus_com.budtobud.qus.development.apk'
 	else:
 		print('App not installed')
 	if res == 'r':
@@ -35,10 +37,22 @@ def set_up_test(self, res='r'):
 	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
 
+def setup_first_signIn_test(self, res='r'):
+	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.WelcomeActivity'
+	if platform.system() == 'Windows':
+		desired_caps['app'] = 'D:/Automation/Qus_com.budtobud.qus.development.apk'
+	else:
+		print('Error login')
+	if res == 'r':
+		desired_caps['noReset'] = 'false'
+	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+	self.driver.find_element_by_id(loc.welcome_sign_in).click()
+
+
 def setup_signIn_test(self, res=''):
 	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.LoginActivity'
 	if platform.system() == 'Windows':
-		desired_caps['app'] = 'D:/Automation/Q.us_com.budtobud.qus.development.apk'
+		desired_caps['app'] = 'D:/Automation/Qus_com.budtobud.qus.development.apk'
 	else:
 		print('Error login')
 	if res == 'r':
@@ -49,7 +63,7 @@ def setup_signIn_test(self, res=''):
 def setup(self):
 	# Start appium server
 	if platform.system() == 'Windows':
-		appium_start = ["D:/Automation/Appium/node.exe", "D:/Automation\Appium/node_modules/appium/bin/appium.js",
+		appium_start = ["D:/Automation/Appium/node.exe", "D:/Automation/Appium/node_modules/appium/bin/appium.js",
 						"--log-level",
 						"error"]
 	else:
@@ -64,6 +78,7 @@ def setup(self):
 
 
 def tear_down_test(self):
+	h.take_screenshot(self, self.id())
 	self.driver.quit()
 
 

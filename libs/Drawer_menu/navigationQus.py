@@ -18,4 +18,6 @@ def navigate_to_listen_with(self):
 
 def navigate_to_playlists(self):
     self.driver.find_element_by_class_name('android.widget.ImageButton').click()
+    self.driver.find_element_by_class_name('android.widget.ImageButton').click()
+    self.driver.find_element_by_class_name('android.widget.ImageButton').click()
     self.driver.find_elements_by_id(loc.drawer_section_button)[3].click()

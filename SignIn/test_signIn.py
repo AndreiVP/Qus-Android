@@ -2,7 +2,7 @@ import libs.signInQus as sIn
 import libs.locators as loc
 import libs.helpers as h
 import unittest
-from config.config import setup, setup_signIn_test, tear_down_test, teardown
+from config.config import setup, setup_first_signIn_test, tear_down_test, teardown
 
 signIn_details = {'username': 'apopatest@mailinator.com',
 				  'password': '111111'}
@@ -33,12 +33,13 @@ class signInTest(unittest.TestCase):
 		teardown(cls)
 
 	def setUp(self):
-		setup_signIn_test(self)
+		setup_first_signIn_test(self)
 
 	def tearDown(self):
 		tear_down_test(self)
 
 	def test_signIn_scenarios(self):
+
 		sIn.signIn(self, signInDetailsNoCredentials)
 		sIn.check_error_message(self, 'Username is incorrect\nThe password needs to be at least 6 characters!')
 		print('Sign In scenario with No Credentials was tested')
