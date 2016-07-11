@@ -46,36 +46,36 @@ class SignUpTest(unittest.TestCase):
 
     def setUp(self):
         set_up_test(self)
-        sUp.check_welcome(self)
-        sUp.check_tour(self)
+        #sUp.check_welcome(self)
+        #sUp.check_tour(self)
 
     def tearDown(self):
         tear_down_test(self)
 
-    def test_register_scenarios(self):
-        sUp.registration(self, registration_empty_details)
-        sUp.check_validation_message(self, 'The nickname is not valid!', 'Email is not valid',
-                                'The password needs to be at least 6 characters!')
-        print('Sign Up scenario with Empty Details was tested')
-        sUp.return_to_sign_up(self)
-        sUp.registration(self, registration_invalid_email_format)
-        sUp.check_validation_message(self, '', 'Email is not valid', '')
-        print('Sign Up scenario with Invalid Email Format was tested')
-        sUp.return_to_sign_up(self)
-        sUp.registration(self, registration_duplicate_email)
-        sUp.check_validation_message(self, '', 'The email address is already in use!', '')
-        print('Sign Up scenario with Duplicate Email was tested')
-        sUp.return_to_sign_up(self)
-        sUp.registration(self, registration_invalid_password)
-        sUp.check_validation_message(self, '', 'Email address is valid!',
-                                     'The password needs to be at least 6 characters!')
-        print('Sign Up scenario with Invalid Password was tested')
-        sUp.return_to_sign_up(self)
-        sUp.registration(self, registration_details)
-        sUp.wait_for_registration(self)
-        sUp.signin_after_signup(self, registration_details)
-        h.sign_out(self)
-        print('Sign Up scenario with Valid Details was tested')
+    # def test_register_scenarios(self):
+    #     sUp.registration(self, registration_empty_details)
+    #     sUp.check_validation_message(self, 'The nickname is not valid!', 'Email is not valid',
+    #                             'The password needs to be at least 6 characters!')
+    #     print('Sign Up scenario with Empty Details was tested')
+    #     sUp.return_to_sign_up(self)
+    #     sUp.registration(self, registration_invalid_email_format)
+    #     sUp.check_validation_message(self, '', 'Email is not valid', '')
+    #     print('Sign Up scenario with Invalid Email Format was tested')
+    #     sUp.return_to_sign_up(self)
+    #     sUp.registration(self, registration_duplicate_email)
+    #     sUp.check_validation_message(self, '', 'The email address is already in use!', '')
+    #     print('Sign Up scenario with Duplicate Email was tested')
+    #     sUp.return_to_sign_up(self)
+    #     sUp.registration(self, registration_invalid_password)
+    #     sUp.check_validation_message(self, '', 'Email address is valid!',
+    #                                  'The password needs to be at least 6 characters!')
+    #     print('Sign Up scenario with Invalid Password was tested')
+    #     sUp.return_to_sign_up(self)
+    #     sUp.registration(self, registration_details)
+    #     sUp.wait_for_registration(self)
+    #     sUp.signin_after_signup(self, registration_details)
+    #     h.sign_out(self)
+    #     print('Sign Up scenario with Valid Details was tested')
 
     # def test_01_register_empty_details(self):
     #     sUp.registration(self, registration_empty_details)
@@ -95,11 +95,15 @@ class SignUpTest(unittest.TestCase):
     #     sUp.registration(self, registration_invalid_password)
     #     h.is_visible(self, loc.register_invalid_pswrd)
     #
-    # def test_05_register_valid_data(self):
-    #     sUp.registration(self, registration_details)
-    #     sUp.wait_for_registration(self)
-    #     sUp.signin_after_signup(self,registration_details)
-    #     h.sign_out(self)
+    def test_05_register_valid_data(self):
+        try:
+            sUp.registration(self, registration_details)
+            sUp.wait_for_registration(self)
+            sUp.signin_after_signup(self,registration_details)
+            h.sign_out(self)
+        except:
+            h.take_screenshot(self, self.id())
+            raise
 
 
 if __name__ == '__main__':

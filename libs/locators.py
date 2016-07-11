@@ -35,6 +35,9 @@ sign_in_alert_OK = 'android:id/button1'
 # Generic -----------------------------------------------------------------------------
 view_bar = 'android.view.View'
 view_title = 'android.widget.TextView'
+listen_with_no_items = 'com.budtobud.qus.development:id/tv_no_items'
+search_button = 'com.budtobud.qus.development:id/search'
+search_input_text = 'com.budtobud.qus.development:id/search_src_text'
 
 
 # Drawer menu --------------------------------------------------------------------------
@@ -46,7 +49,6 @@ search_magn_glass = 'com.budtobud.qus.development:id/search'
 
 # Search process ----------------------------------------------------------------------
 dropdown_button = 'com.budtobud.qus.development:id/btn_queue_search_dropdown'
-search_input_text ='com.budtobud.qus.development:id/search_src_text'
 search_loading_spinner = 'com.budtobud.qus.development:id/pb_queue_search_loading'
 search_add_button = 'com.budtobud.qus.development:id/img_btb_add_icon'
 
@@ -70,6 +72,14 @@ playlist_edit_button = 'com.budtobud.qus.development:id/iv_more'
 playlist_title = 'com.budtobud.qus.development:id/title'
 playlist_delete_ok = 'com.budtobud.qus.development:id/tv_positive'
 playlist_delete_cancel = 'com.budtobud.qus.development:id/tv_negative'
-playlist_no_items = 'com.budtobud.qus.development:id/tv_no_items'
+
+# Listen with --------------------------------------------------------------------
+lw_magn_glass = 'com.budtobud.qus.development:id/search'
+lw_recommended = 'com.budtobud.qus.development:id/tv_header'
+lw_follow_button = 'com.budtobud.qus.development:id/following_btn'
+lw_follow_card = 'com.budtobud.qus.development:id/following_name'
+lw_options_list = 'com.budtobud.qus.development:id/user_list_text'
+lw_profile_follow = 'com.budtobud.qus.development:id/stop_following'
+
 
 

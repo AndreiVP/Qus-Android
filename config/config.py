@@ -1,6 +1,5 @@
 import subprocess
 import libs.locators as loc
-import libs.helpers as h
 from appium import webdriver
 import os, platform, time
 
@@ -15,15 +14,20 @@ loginDetails = {
 	'passwd': '111111',
 }
 
+
 desired_caps = {'platformName': 'Android',
-				# 'platformVersion': '5.1',
+                # 'platformVersion': '5.1',
 				# 'deviceName': 'CB5A260E1P',  # Z1 Compact,
-				'platformVersion': '5.0',
-				'deviceName': 'gt_i9505_b802fb37',  # Galaxy S4
-				# 'platformVersion': '4.4',
-				# 'deviceName': 'TA4310FINM', #Xiaomi
-				'noReset': 'true',
-				}
+				#'platformVersion': '5.0',
+				#'deviceName': 'gt_i9505_b802fb37',  # Galaxy S4
+				#'platformVersion': '4.4',
+				#'deviceName': 'TA4310FINM',  #Xiaomi
+				'platformVersion': '6.0.1',
+				'deviceName': 'ZX1G424RG3',  #Nexus6
+				'noReset': 'true'
+                # 'resetKeyboard': 'true',
+                # 'unicodeKeyboard': 'true'
+                }
 
 
 def set_up_test(self, res='r'):
@@ -48,11 +52,21 @@ def setup_first_signIn_test(self, res='r'):
 	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 	self.driver.find_element_by_id(loc.welcome_sign_in).click()
 
+def setup_inApp_test(self, res=''):
+	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.ToolbarActivity'
+	if platform.system() == 'Windows':
+		desired_caps['app'] = 'D:/Automation/Qus_com.budtobud.qus.development.apk'
+	else:
+		print('Error login')
+	if res == 'r':
+		desired_caps['noReset'] = 'false'
+	self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
 
 def setup_signIn_test(self, res=''):
 	desired_caps['appWaitActivity'] = 'com.budtobud.qus.activities.LoginActivity'
 	if platform.system() == 'Windows':
-		desired_caps['app'] = 'D:/Automation/Qus_com.budtobud.qus.development.apk'
+		desired_caps['app'] = 'D:/Automation/Q.us_com.budtobud.qus.development.apk'
 	else:
 		print('Error login')
 	if res == 'r':
@@ -78,7 +92,7 @@ def setup(self):
 
 
 def tear_down_test(self):
-	h.take_screenshot(self, self.id())
+	#h.take_screenshot(self, self.id())
 	self.driver.quit()
 
 

@@ -2,20 +2,27 @@ from logging import exception
 import libs.helpers as h
 import libs.locators as loc
 import time
+import os
+
+adb_path = "D:\Programs\Android-SDK\platform-tools/adb.exe"
 
 
 def signIn(self, login_details):
 		h.find_and_clear_field(self, loc.sign_in_email)
-		self.driver.find_element_by_id(loc.sign_in_email).send_keys(login_details['username'])
+		self.driver.find_element_by_id(loc.sign_in_email).click()
+		os.system(adb_path + ' shell input text ' + '' + login_details["username"])
+		#self.driver.find_element_by_id(loc.sign_in_email).send_keys(login_details['username'])
 		h.hide_keys(self)
 		h.find_and_clear_field(self, loc.sign_in_password)
-		self.driver.find_element_by_id(loc.sign_in_password).send_keys(login_details['password'])
+		self.driver.find_element_by_id(loc.sign_in_password).click()
+		os.system(adb_path + ' shell input text ' + '' + login_details["password"])
+		# self.driver.find_element_by_id(loc.sign_in_email).send_keys(login_details['password'])
 		h.hide_keys(self)
 		self.driver.find_element_by_id(loc.sign_in_submit).click()
 
 
 def signIn_valid(self, username, password):
-	if h.is_visible(self, loc.sign_in_submit, 60):
+	if h.is_visible_by_id(self, loc.sign_in_submit, 60):
 		self.driver.find_element_by_id(loc.sign_in_email).clear()
 		self.driver.find_element_by_id(loc.sign_in_email).send_keys(username)
 		h.hide_keys(self)
@@ -43,7 +50,7 @@ def wait_for_sign_in(self):
 
 
 def check_error_message(self, expected_error):
-	h.is_visible(self, loc.sign_in_alert_title)
+	h.is_visible_by_id(self, loc.sign_in_alert_title)
 	error_message = self.driver.find_element_by_id(loc.sign_in_alert_message).text
 	self.assertEqual(error_message, expected_error, "Error message is not the expected one")
 

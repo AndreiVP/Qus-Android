@@ -83,17 +83,20 @@ def open_sign_in(self):
 
 
 def registration(self, registration_details):
-	if h.is_visible(self, loc.sign_up_title, 60):
-		self.driver.find_element_by_id(loc.sign_up_nickname).clear()
+	self.driver.find_element_by_id(loc.welcome_sign_up).click()
+	self.driver.find_element_by_id(loc.tour_next).click()
+	if h.is_visible_by_id(self, loc.sign_up_title, 60):
+		#self.driver.find_element_by_id(loc.sign_up_nickname).clear()
 		self.driver.find_element_by_id(loc.sign_up_nickname).send_keys(registration_details['nickname'])
 		h.hide_keys(self)
-		self.driver.find_element_by_id(loc.sign_up_email).clear()
+		#self.driver.find_element_by_id(loc.sign_up_email).clear()
 		self.driver.find_element_by_id(loc.sign_up_email).send_keys(registration_details['email'])
 		h.hide_keys(self)
-		self.driver.find_element_by_id(loc.sign_up_password).clear()
+		#self.driver.find_element_by_id(loc.sign_up_password).clear()
 		self.driver.find_element_by_id(loc.sign_up_password).send_keys(registration_details['password'])
 		h.hide_keys(self)
 		self.driver.find_element_by_id(loc.sign_up_checkbox).click()
+		self.driver.find_element_by_id(loc.sign_up_submit).click()
 
 
 
